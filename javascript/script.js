@@ -39,7 +39,8 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
     dataFromAPI.forEach( (individualCrypto) => {
         if (userInput == individualCrypto.name)
         console.log(individualCrypto);
-        cryptoInfo.innerHTML = '';
+        // cryptoInfo.innerHTML = '';
+
         cryptoInfo.innerHTML = `
         Icon:
         <figure>
@@ -54,7 +55,8 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
         <h2>Market Cap: ${individualCrypto.market_cap}</h2>
         <h2>Market Cap Rank: ${individualCrypto.market_cap_rank}</h2>
         <h2>Last Updated: ${individualCrypto.last_updated}</h2>
-        `
+        `;
+
         inputArea.value = '';
     });
     });
