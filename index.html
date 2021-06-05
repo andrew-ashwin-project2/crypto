@@ -8,12 +8,27 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <h1>Daily Crypto Updates Project</h1>
-    <form action="submit">
-        <label for="submit">Submit</label>
-        <input type="submit" name="submit" id="submit">
-    </form>
-    <h2>Read More Here</h2>
-
+    <main class="wrapper">
+        <header>
+            <h1>Daily Crypto Updates Project</h1>
+        </header>
+        
+        <form action="submit">
+            <fieldset>
+                <label for="submit" class="sr-only">Submit</label>
+                <input type="text" name="submit" id="submit" placeholder="Which Crypto Do You Want to Know About?">
+            </fieldset>
+            <button type="submit">Search</button>
+        </form>
+        <div class="crypto-info" id="crypto-info">
+            <!-- Crypto Info Will be Appended Here! -->
+        </div>
+    </main>
+    
+    <footer class="wrapper">
+        <a href="#">Click Here to Learn More!</a>
+    </footer>
+        
+    <script src="./javascript/script.js"></script>
 </body>
 </html>

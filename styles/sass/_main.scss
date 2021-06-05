@@ -1,0 +1,25 @@
+body {
+    color: #fff;
+    background: linear-gradient(to right, #414345, #232526); 
+}
+
+.wrapper {
+	width: 90%;
+	max-width: 1280px;
+    margin: 0 auto;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+figure {
+    height: 75px;
+    width: 75px;
+}
+
+input[type="text"]{
+    width: 100%;
+}
