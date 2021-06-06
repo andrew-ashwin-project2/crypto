@@ -45,11 +45,11 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
             <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
             </figure>
             <h2>Crypto Name: ${individualCrypto.name} (${individualCrypto.symbol.toUpperCase()})</h2>
-            <h2>Current Price: ${individualCrypto.current_price.toFixed(5)}</h2>
-            <h3>24 Hour Low: ${individualCrypto.low_24h.toFixed(5)}</h3>
-            <h3>24 Hour High: ${individualCrypto.high_24h.toFixed(5)}</h3>
-            <h3>Change in Last 1 Hour: ${individualCrypto.price_change_percentage_1h_in_currency.toFixed(5)}</h3>
-            <h4>Market Cap: ${individualCrypto.market_cap}</h4>
+            <h2>Current Price: $${individualCrypto.current_price.toFixed(2)}</h2>
+            <h3>24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
+            <h3>24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
+            <h3>Change in Last 1 Hour: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
+            <h4>Market Cap: $${individualCrypto.market_cap}</h4>
             <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4>
             <h5>Last Updated: ${individualCrypto.last_updated}</h5>
             `;   
