@@ -1,12 +1,2 @@
-
-body {
-    color: #fff;
-    background: linear-gradient(to right, #414345, #232526); 
-}
-
-
-.wrapper {
-	width: 90%;
-	max-width: 1200px;
-    margin: 0 auto;
-}
+@import 'setup';
+@import 'main';
