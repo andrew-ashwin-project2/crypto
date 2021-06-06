@@ -35,29 +35,26 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
     const cryptoInfo = document.querySelector('#crypto-info')
     const inputArea = document.querySelector('input');
     const userInput = inputArea.value;
-    // Loop Through Array. If userInput = Crypto, 
+    // Loop Through Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
     dataFromAPI.forEach( (individualCrypto) => {
-        if (userInput == individualCrypto.name)
-        console.log(individualCrypto);
-        // cryptoInfo.innerHTML = '';
-
-        cryptoInfo.innerHTML = `
-        Icon:
-        <figure>
+        if (userInput == individualCrypto.name){
+            console.log(individualCrypto);
+            cryptoInfo.innerHTML = `
+            Icon:
+            <figure>
             <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
-        </figure>
-        <h2>Crypto Name: ${individualCrypto.name} (${individualCrypto.symbol})</h2>
-        <h2>Testing ID Value: ${individualCrypto.id}</h2>
-        <h2>Current Price: ${individualCrypto.current_price.toFixed(5)}</h2>
-        <h2>Change in Last 1 Hour: ${individualCrypto.price_change_percentage_1h_in_currency.toFixed(5)}</h2>
-        <h2>24 Hour Low: ${individualCrypto.low_24h.toFixed(5)}</h2>
-        <h2>24 Hour High: ${individualCrypto.high_24h.toFixed(5)}</h2>
-        <h2>Market Cap: ${individualCrypto.market_cap}</h2>
-        <h2>Market Cap Rank: ${individualCrypto.market_cap_rank}</h2>
-        <h2>Last Updated: ${individualCrypto.last_updated}</h2>
-        `;
-
-        inputArea.value = '';
+            </figure>
+            <h2>Crypto Name: ${individualCrypto.name} (${individualCrypto.symbol.toUpperCase()})</h2>
+            <h2>Current Price: ${individualCrypto.current_price.toFixed(5)}</h2>
+            <h3>24 Hour Low: ${individualCrypto.low_24h.toFixed(5)}</h3>
+            <h3>24 Hour High: ${individualCrypto.high_24h.toFixed(5)}</h3>
+            <h3>Change in Last 1 Hour: ${individualCrypto.price_change_percentage_1h_in_currency.toFixed(5)}</h3>
+            <h4>Market Cap: ${individualCrypto.market_cap}</h4>
+            <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4>
+            <h5>Last Updated: ${individualCrypto.last_updated}</h5>
+            `;   
+            inputArea.value = '';
+        }
     });
     });
 };
