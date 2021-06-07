@@ -21,8 +21,53 @@ cryptoApp.getCrypto = () => {
         console.log(jsonData);
         // Call displayCrypto Function
         cryptoApp.displayCrypto(jsonData);
+        cryptoApp.autoFill(jsonData);
     });
 };
+
+cryptoApp.autoFill = (arrayData) => {
+    const searchInput = document.getElementById('submit');
+    const suggestionsPanel = document.querySelector('.suggestions');
+    searchInput.addEventListener('keyup', function () {
+        // console.log(searchInput.value);
+        const input = searchInput.value.toLowerCase();
+        suggestionsPanel.innerHTML = '';
+        const suggestions = arrayData.filter((specificCrypto) => {
+            
+            return specificCrypto.id.toLowerCase().startsWith(input) || 
+            specificCrypto.name.toLowerCase().startsWith(input);
+            
+        });
+        // console.log(suggestions);
+        // cryptoApp.filteredArray = arrayData.filter((specificCrypto) => {
+
+        //     return specificCrypto.id.toLowerCase();
+            
+
+        // });
+        suggestions.forEach(function (suggested) {
+            const coinSuggestion = document.createElement('li');
+            coinSuggestion.innerHTML = suggested.name;
+            suggestionsPanel.appendChild(coinSuggestion);
+            
+        });
+        if (input === '') {
+            suggestionsPanel.innerHTML = '';
+        }; 
+    });
+
+
+    suggestionsPanel.addEventListener('click', function (event) {
+        
+        console.log(event.target.innerText.toLowerCase());
+        // if statement matching userInput to api call
+        // call displayCrypto function
+    })
+};
+
+console.log(cryptoApp.filteredArray);
+
+
 
 // Define displayCrypto Function
 cryptoApp.displayCrypto = function(dataFromAPI) {
@@ -32,15 +77,16 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
     form.addEventListener('submit', (event) => {
     event.preventDefault();
     // Define variables related to form and display
-    const cryptoInfo = document.querySelector('#crypto-info')
+    const cryptoInfo = document.querySelector('#crypto-info');
     const inputArea = document.querySelector('input');
     const userInput = inputArea.value;
+
     // Loop Through Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
     dataFromAPI.forEach( (individualCrypto) => {
-        if (userInput == individualCrypto.name){
+
+        if (userInput.toLowerCase() == individualCrypto.name.toLowerCase()){
             console.log(individualCrypto);
             cryptoInfo.innerHTML = `
-            Icon:
             <figure>
             <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
             </figure>
@@ -54,10 +100,11 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
             <h5>Last Updated: ${individualCrypto.last_updated}</h5>
             `;   
             inputArea.value = '';
-        }
+        } 
     });
     });
 };
+
 
 // Setup Init Function
 cryptoApp.init = () => {
