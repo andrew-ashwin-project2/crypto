@@ -57,50 +57,6 @@ cryptoApp.autoFill = (arrayData) => {
     });
 };
 
-cryptoApp.autoFill = (arrayData) => {
-    const searchInput = document.getElementById('submit');
-    const suggestionsPanel = document.querySelector('.suggestions');
-    searchInput.addEventListener('keyup', function () {
-        // console.log(searchInput.value);
-        const input = searchInput.value.toLowerCase();
-        suggestionsPanel.innerHTML = '';
-        const suggestions = arrayData.filter((specificCrypto) => {
-            
-            return specificCrypto.id.toLowerCase().startsWith(input) || 
-            specificCrypto.name.toLowerCase().startsWith(input);
-            
-        });
-        // console.log(suggestions);
-        // cryptoApp.filteredArray = arrayData.filter((specificCrypto) => {
-
-        //     return specificCrypto.id.toLowerCase();
-            
-
-        // });
-        suggestions.forEach(function (suggested) {
-            const coinSuggestion = document.createElement('li');
-            coinSuggestion.innerHTML = suggested.name;
-            suggestionsPanel.appendChild(coinSuggestion);
-            
-        });
-        if (input === '') {
-            suggestionsPanel.innerHTML = '';
-        }; 
-    });
-
-
-    suggestionsPanel.addEventListener('click', function (event) {
-        
-        console.log(event.target.innerText.toLowerCase());
-        // if statement matching userInput to api call
-        // call displayCrypto function
-    })
-};
-
-console.log(cryptoApp.filteredArray);
-
-
-
 // Define displayCrypto Function
 cryptoApp.displayCrypto = function(dataFromAPI) {
     // Store form in a variable
