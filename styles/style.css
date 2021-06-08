@@ -313,9 +313,41 @@ fieldset input {
   border-top: 1px solid #666;
   cursor: pointer;
   list-style: none;
+<<<<<<< HEAD
   padding-left: 10px;
 }
 .suggestions li:hover {
   background-color: #3481f5;
   border-radius: 5px;
+=======
+  padding-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.suggestions li img {
+  width: 50px;
+  padding-right: 1rem;
+  padding-left: 10px;
+}
+
+.suggestions li:hover,
+.suggestions li:focus-within {
+  background-color: #999;
+}
+
+.suggestions {
+  border-top: 2px solid black;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow: auto;
+}
+
+fieldset {
+  position: relative;
+>>>>>>> 4069d647b3a336f3ff576a073bfbde835031b56c
 }

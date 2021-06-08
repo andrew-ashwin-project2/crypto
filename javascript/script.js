@@ -36,7 +36,7 @@ cryptoApp.autoFill = (arrayData) => {
         
         suggestions.forEach(function (suggested) {
             const coinSuggestion = document.createElement('li');
-            coinSuggestion.innerHTML = suggested.name;
+            coinSuggestion.innerHTML = `<img src="${suggested.image}" alt="Symbol for ${suggested.name}" class="searchSymbol">  ${suggested.name}`;
             suggestionsPanel.appendChild(coinSuggestion);
         });
         if (input === '') {
@@ -51,6 +51,12 @@ cryptoApp.autoFill = (arrayData) => {
         cryptoApp.displayCrypto(dC);
         // console.log(dC);
     })
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key == 'ArrowDown') {
+            console.log('down arrow pressed');
+            suggestionsPanel.focus();
+        };
+    });
 };
 // Define displayCrypto Function
 cryptoApp.displayCrypto = function (dataFromAPI) {
@@ -79,10 +85,13 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
             <h4>Market Cap: $${dataFromAPI[individualCrypto].market_cap}</h4>
             <h4>Market Cap Rank: ${dataFromAPI[individualCrypto].market_cap_rank}/250</h4>
             <h5>Last Updated: ${dataFromAPI[individualCrypto].last_updated}</h5>
-            `;
-                inputArea.value = '';
-            }
-        };
+            `;   
+            inputArea.value = '';
+        } else if (userInput !== dataFromAPI[individualCrypto].name){
+            inputArea.placeholder = `No results found for "${userInput}", please try again.`;
+            inputArea.value = '';
+    }; 
+    };
     });
 };
 // Setup Init Function
