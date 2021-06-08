@@ -262,6 +262,10 @@ input[type=text] {
   width: 100%;
 }
 
+input[type=text]:focus {
+  outline: none;
+}
+
 .crypto-info {
   display: grid;
   -ms-flex-wrap: wrap;
@@ -306,9 +310,32 @@ fieldset input {
   cursor: pointer;
   list-style: none;
   padding-left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.suggestions li img {
+  width: 50px;
+  padding-right: 1rem;
+  padding-left: 10px;
 }
 
-.suggestions div:hover,
-.suggestions div:focus-within {
+.suggestions li:hover,
+.suggestions li:focus-within {
   background-color: #999;
+}
+
+.suggestions {
+  border-top: 2px solid black;
+  margin: 0;
+  padding: 0;
+  max-height: 200px;
+  overflow: auto;
+}
+
+fieldset {
+  position: relative;
 }
