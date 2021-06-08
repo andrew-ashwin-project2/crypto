@@ -29,15 +29,9 @@ figure {
 
 input[type="text"]{
     width: 100%;
-<<<<<<< HEAD
     &:focus {
         outline: none;
     }
-=======
-    &:focus{
-        outline: none;
-    };
->>>>>>> 4069d647b3a336f3ff576a073bfbde835031b56c
 }
 
 .crypto-info {
@@ -59,16 +53,11 @@ fieldset {
     margin: 100px auto;
     background: rgb(20, 20, 20);
     border-radius: 5px;
-<<<<<<< HEAD
     overflow: auto;
     // position: absolute;
     // top: 50%;
     // left: 50%;
     // transform: translate(-50%, -50%);
-=======
-    overflow: hidden;
-    // position: absolute;
->>>>>>> 4069d647b3a336f3ff576a073bfbde835031b56c
 }
 
 fieldset input {
@@ -83,14 +72,10 @@ fieldset input {
     // border-top: 2px solid black;
     margin: 0;
     padding: 0;
-<<<<<<< HEAD
     max-height: 200px;
     overflow: auto;
     position: relative;
     width: 100%;
-=======
-    // position: relative    
->>>>>>> 4069d647b3a336f3ff576a073bfbde835031b56c
 }
 
 
@@ -101,25 +86,6 @@ fieldset input {
     border-top: 1px solid #666;
     cursor: pointer;
     list-style: none;
-<<<<<<< HEAD
-    padding-left: 10px;
-    &:hover {
-        background-color: rgb(52, 129, 245);
-        border-radius: 5px;
-    }
-    // position: relative;
-    
-    // width: 100%;
-}
-
-// ul li:hover,
-// ul li:focus-within {
-    
-    
-// }
-
-
-=======
     padding-left: 0;
     display: flex;    
     align-items: center;
@@ -146,4 +112,3 @@ fieldset input {
 fieldset {
     position: relative;
 }
->>>>>>> 4069d647b3a336f3ff576a073bfbde835031b56c

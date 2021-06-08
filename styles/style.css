@@ -313,13 +313,6 @@ fieldset input {
   border-top: 1px solid #666;
   cursor: pointer;
   list-style: none;
-<<<<<<< HEAD
-  padding-left: 10px;
-}
-.suggestions li:hover {
-  background-color: #3481f5;
-  border-radius: 5px;
-=======
   padding-left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -349,5 +342,4 @@ fieldset input {
 
 fieldset {
   position: relative;
->>>>>>> 4069d647b3a336f3ff576a073bfbde835031b56c
 }
