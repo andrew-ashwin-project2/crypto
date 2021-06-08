@@ -261,7 +261,6 @@ figure {
 input[type=text] {
   width: 100%;
 }
-
 input[type=text]:focus {
   outline: none;
 }
