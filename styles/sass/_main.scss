@@ -1,6 +1,15 @@
 body {
     color: #fff;
-    background: linear-gradient(to right, #414345, #232526); 
+    // background: linear-gradient(to right, #414345, #232526); 
+    background-image: url(../assets/cryptocurrency-coins_SOIN19158_927053734_is_1560x880.jpg);
+    background-color: #0c0c0c;
+    background-blend-mode: overlay;
+    // background-color: #2d3436;
+    // background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+    // background-position: center;
+    // background-attachment: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .wrapper {
@@ -22,19 +31,20 @@ figure {
 
 input[type="text"]{
     width: 100%;
-    &:focus{
+    &:focus {
         outline: none;
-    };
+    }
 }
 
 .crypto-info {
-    display: grid;
+    display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    align-items: center;
+    align-items: flex-end;
     flex-wrap: wrap;
     margin: 0 auto;
-    width: 50%;
+    // width: 50%;
+    // height: 100%;
 }
 
 
@@ -43,10 +53,13 @@ input[type="text"]{
 fieldset {
     width: 60%;
     margin: 100px auto;
-    background: #333;
+    background: rgb(20, 20, 20);
     border-radius: 5px;
-    overflow: hidden;
+    overflow: auto;
     // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
 }
 
 fieldset input {
@@ -56,12 +69,17 @@ fieldset input {
     color: #fff;
 }
 
+
 .suggestions {
-    border-top: 2px solid black;
+    // border-top: 2px solid black;
     margin: 0;
     padding: 0;
-    // position: relative    
+    max-height: 200px;
+    overflow: auto;
+    position: relative;
+    width: 100%;
 }
+
 
 .suggestions li {
     padding: 15px;
@@ -78,7 +96,10 @@ fieldset input {
         padding-right: 1rem;
         padding-left: 10px;
     };
+    
 };
+
+
 
 .suggestions li:hover,
 .suggestions li:focus-within {
@@ -86,7 +107,6 @@ fieldset input {
 }
 
 .suggestions {
-    border-top: 2px solid black;
     margin: 0;
     padding: 0;
     max-height: 200px;
