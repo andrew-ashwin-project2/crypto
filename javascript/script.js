@@ -36,6 +36,7 @@ cryptoApp.autoFill = (arrayData) => {
         
         suggestions.forEach(function (suggested) {
             const coinSuggestion = document.createElement('li');
+            coinSuggestion.setAttribute('tabindex', '0');
             coinSuggestion.innerHTML = `<img src="${suggested.image}" alt="Symbol for ${suggested.name}" class="searchSymbol">  ${suggested.name}`;
             suggestionsPanel.appendChild(coinSuggestion);
         });
@@ -51,12 +52,21 @@ cryptoApp.autoFill = (arrayData) => {
         cryptoApp.displayCrypto(dC);
         // console.log(dC);
     })
-    searchInput.addEventListener('keydown', function (event) {
-        if (event.key == 'ArrowDown') {
-            console.log('down arrow pressed');
-            suggestionsPanel.focus();
-        };
-    });
+    suggestionsPanel.addEventListener('keyup', function (event) {
+        if (event.keyCode === 13) {
+            let dC = event.target.innerText;
+            searchInput.value = `${dC}`;
+            suggestionsPanel.innerHTML = "";
+            searchInput.focus();
+            cryptoApp.displayCrypto(dC);    
+        }
+    })
+    // searchInput.addEventListener('keydown', function (event) {
+    //     if (event.key == 'ArrowDown') {
+    //         console.log('down arrow pressed');
+    //         suggestionsPanel.focus();
+    //     };
+    // });
 };
 // Define displayCrypto Function
 cryptoApp.displayCrypto = function (dataFromAPI) {
@@ -74,7 +84,7 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
         for (let individualCrypto in dataFromAPI) {
             if (userInput.toLowerCase() == dataFromAPI[individualCrypto].name.toLowerCase()) {
                 cryptoInfo.innerHTML = `
-            <figure>
+            <figure id="">
             <img src="${dataFromAPI[individualCrypto].image}" alt="Symbol for ${dataFromAPI[individualCrypto].name}">
             </figure>
             <h2>${dataFromAPI[individualCrypto].name} (${dataFromAPI[individualCrypto].symbol.toUpperCase()})</h2>
@@ -87,10 +97,13 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
             <h5>Last Updated: ${dataFromAPI[individualCrypto].last_updated}</h5>
             `;   
             inputArea.value = '';
-        } else if (userInput !== dataFromAPI[individualCrypto].name){
-            inputArea.placeholder = `No results found for "${userInput}", please try again.`;
-            inputArea.value = '';
-    }; 
+            
+            } else if (cryptoInfo.childElementCount == 0) {
+                console.log(dataFromAPI[individualCrypto].name)
+                inputArea.placeholder = `No results found for "${userInput}", please try again.`;
+                inputArea.value = '';
+            // || cryptoInfo.innerHTML.indexOf(`${userInput}`) > 1) 
+        }; 
     };
     });
 };

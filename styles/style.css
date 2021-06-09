@@ -240,6 +240,8 @@ body {
   background-image: url(../assets/cryptocurrency-coins_SOIN19158_927053734_is_1560x880.jpg);
   background-color: #0c0c0c;
   background-blend-mode: overlay;
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .wrapper {
@@ -333,7 +335,6 @@ fieldset input {
 }
 
 .suggestions {
-  border-top: 2px solid black;
   margin: 0;
   padding: 0;
   max-height: 200px;
