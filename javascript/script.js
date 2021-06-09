@@ -89,7 +89,7 @@ cryptoApp.displayCrypto = function(dataFromAPI) {
         } else if (userInput !== dataFromAPI[individualCrypto].name){
             inputArea.placeholder = `No results found for "${userInput}", please try again.`;
             inputArea.value = '';
-    }; 
+        }; 
     };
     });
 };
