@@ -61,52 +61,48 @@ cryptoApp.autoFill = (arrayData) => {
             cryptoApp.displayCrypto(dC);    
         }
     })
-    // searchInput.addEventListener('keydown', function (event) {
-    //     if (event.key == 'ArrowDown') {
-    //         console.log('down arrow pressed');
-    //         suggestionsPanel.focus();
-    //     };
-    // });
+    searchInput.addEventListener('keydown', function (event) {
+        if (event.key == 'ArrowDown') {
+            console.log('down arrow pressed');
+            suggestionsPanel.focus();
+        };
+    });
 };
 // Define displayCrypto Function
 cryptoApp.displayCrypto = function (dataFromAPI) {
-    // Store form in a variable
+    // Define variables related to form and display
     const form = document.querySelector('form');
+    const cryptoInfo = document.querySelector('#crypto-info');
+    const inputArea = document.querySelector('input');
+    const userInput = inputArea.value;
     // Add event listener to listen for submit
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        // Define variables related to form and display
-        const cryptoInfo = document.querySelector('#crypto-info');
-        const inputArea = document.querySelector('input');
-        const userInput = inputArea.value;
-        console.log(dataFromAPI);
         // Loop Through Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
-        for (let individualCrypto in dataFromAPI) {
-            if (userInput.toLowerCase() == dataFromAPI[individualCrypto].name.toLowerCase()) {
-                cryptoInfo.innerHTML = `
-            <figure id="">
-            <img src="${dataFromAPI[individualCrypto].image}" alt="Symbol for ${dataFromAPI[individualCrypto].name}">
-            </figure>
-            <h2>${dataFromAPI[individualCrypto].name} (${dataFromAPI[individualCrypto].symbol.toUpperCase()})</h2>
-            <h2>Current Price: $${dataFromAPI[individualCrypto].current_price.toFixed(2)}</h2>
-            <h3>24 Hour Low: $${dataFromAPI[individualCrypto].low_24h.toFixed(2)}</h3>
-            <h3>24 Hour High: $${dataFromAPI[individualCrypto].high_24h.toFixed(2)}</h3>
-            <h3>Change in Last 1 Hour: $${dataFromAPI[individualCrypto].price_change_percentage_1h_in_currency.toFixed(2)}</h3>
-            <h4>Market Cap: $${dataFromAPI[individualCrypto].market_cap}</h4>
-            <h4>Market Cap Rank: ${dataFromAPI[individualCrypto].market_cap_rank}/250</h4>
-            <h5>Last Updated: ${dataFromAPI[individualCrypto].last_updated}</h5>
-            `;   
-            inputArea.value = '';
-            
-            } else if (cryptoInfo.childElementCount == 0) {
-                console.log(dataFromAPI[individualCrypto].name)
-                inputArea.placeholder = `No results found for "${userInput}", please try again.`;
-                inputArea.value = '';
-            // || cryptoInfo.innerHTML.indexOf(`${userInput}`) > 1) 
-        }; 
-    };
+        dataFromAPI.forEach( (individualCrypto) => {
+                if (userInput.toLowerCase() == individualCrypto.name.toLowerCase()) {
+                    cryptoInfo.innerHTML = `
+                        <figure id="">
+                        <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
+                        </figure>
+                        <h2>${individualCrypto.name} (${individualCrypto.symbol.toUpperCase()})</h2>
+                        <h2>Current Price: $${individualCrypto.current_price.toFixed(2)}</h2>
+                        <h3>24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
+                        <h3>24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
+                        <h3>Change in Last 1 Hour: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
+                        <h4>Market Cap: $${individualCrypto.market_cap}</h4>
+                        <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4>
+                        <h5>Last Updated: ${individualCrypto.last_updated}</h5>
+                        `;   
+                        inputArea.value = '';
+                } else if (cryptoInfo.childElementCount == 0) {
+                    cryptoInfo.innerHTML = `No results found for "${userInput}", please try again.`;
+                    inputArea.value = '';
+                };
+        })  
     });
 };
+
 // Setup Init Function
 cryptoApp.init = () => {
     cryptoApp.getCrypto();
