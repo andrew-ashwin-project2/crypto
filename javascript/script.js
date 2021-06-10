@@ -94,15 +94,14 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
             <h3>Change in Last 1 Hour: $${dataFromAPI[individualCrypto].price_change_percentage_1h_in_currency.toFixed(2)}</h3>
             <h4>Market Cap: $${dataFromAPI[individualCrypto].market_cap}</h4>
             <h4>Market Cap Rank: ${dataFromAPI[individualCrypto].market_cap_rank}/250</h4>
-            <h5>Last Updated: ${dataFromAPI[individualCrypto].last_updated}</h5>
             `;   
             inputArea.value = '';
-            
-            } else if (cryptoInfo.childElementCount == 0) {
-                console.log(dataFromAPI[individualCrypto].name)
-                inputArea.placeholder = `No results found for "${userInput}", please try again.`;
-                inputArea.value = '';
-            // || cryptoInfo.innerHTML.indexOf(`${userInput}`) > 1) 
+        
+            // } else if (cryptoInfo.childElementCount == 0) {
+            //     console.log(dataFromAPI[individualCrypto].name)
+            //     inputArea.placeholder = `No results found for "${userInput}", please try again.`;
+            //     inputArea.value = '';
+            // // || cryptoInfo.innerHTML.indexOf(`${userInput}`) > 1) 
         }; 
     };
     });

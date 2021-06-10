@@ -237,66 +237,159 @@ html {
 
 body {
   color: #fff;
-  background-image: url(../assets/cryptocurrency-coins_SOIN19158_927053734_is_1560x880.jpg);
-  background-color: #0c0c0c;
-  background-blend-mode: overlay;
+  background-color: #2d3436;
+  background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   background-repeat: no-repeat;
-  height: 100vh;
+  font-family: "Helvetica Neue", sans-serif;
+  height: 100%;
+}
+
+body, html {
+  height: 100%;
 }
 
 .wrapper {
+  max-width: 1200px;
   width: 90%;
-  max-width: 1280px;
   margin: 0 auto;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 img {
   width: 100%;
   height: auto;
-  display: block;
 }
 
-figure {
-  height: 75px;
-  width: 75px;
+body,
+ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+form {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  margin-top: 50px;
+}
+header h1 {
+  color: #fff;
+  font-size: 10rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+fieldset {
+  width: 60%;
+  margin: 70px auto 50px;
+  background: #141414;
+  border-radius: 5px;
+  overflow: auto;
+  position: absolute;
 }
 
 input[type=text] {
-  width: 100%;
+  font-size: 2rem;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  padding: 15px;
+  width: 80%;
 }
 input[type=text]:focus {
   outline: none;
 }
 
-.crypto-info {
+::-webkit-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+::-moz-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+::-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+.search-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
-  flex-wrap: wrap;
-  margin: 0 auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-fieldset {
-  width: 60%;
-  margin: 100px auto;
-  background: #141414;
-  border-radius: 5px;
-  overflow: auto;
-}
-
-fieldset input {
-  background: transparent;
-  border: 0;
-  font-size: 30px;
+button {
+  display: inline-block;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  text-decoration: none;
+  background: none;
   color: #fff;
+  font-family: sans-serif;
+  font-size: 2rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: 250ms ease-in-out;
+  transition: 250ms ease-in-out;
+  -webkit-transform: 150ms ease;
+          transform: 150ms ease;
+  border-radius: 5px;
+}
+
+button:hover,
+button:focus-within {
+  background: #0053ba;
+}
+
+button:active {
+  -webkit-transform: scale(0.99);
+          transform: scale(0.99);
 }
 
 .suggestions {
@@ -331,16 +424,52 @@ fieldset input {
 
 .suggestions li:hover,
 .suggestions li:focus-within {
-  background-color: #999;
+  background-color: #427de2;
 }
 
-.suggestions {
-  margin: 0;
-  padding: 0;
-  max-height: 200px;
-  overflow: auto;
+.crypto-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 200px;
 }
 
-fieldset {
-  position: relative;
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h1, h2, h3, h4 {
+  padding-top: 0 auto;
+}
+
+figure {
+  height: 75px;
+  width: 75px;
+  margin: 0 auto;
+}
+
+footer {
+  text-align: center;
+  font-size: 2rem;
+  color: #666;
+  margin: 0 auto;
+  padding-top: 70px;
 }

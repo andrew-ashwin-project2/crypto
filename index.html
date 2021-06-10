@@ -5,23 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crypto Project</title>
+    <script src="https://kit.fontawesome.com/2c4efad1e7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/style.css">
 </head>
-<body>
-    <header class="header wrapper">
-        <h1>Daily Crypto Updates</h1>
-    </header>
 
+<body>
     <main class="main wrapper"> 
+        <header class="header">
+            <h1>Daily Crypto Updates</h1>
+        </header>
         <form action="submit">
             <fieldset>
-                <label for="submit" class="sr-only">Submit</label>
-                <input type="text" class="search-input" name="submit" id="submit" autocomplete="off" placeholder="Which Crypto Do You Want to Know About?" autofocus >
+                <div class="search-bar">
+                    <label for="submit" class="sr-only">Submit</label>
+                    <input type="text" class="search-input" name="submit" id="submit" autocomplete="off" placeholder="Which Crypto Do You Want to Know About?" autofocus>
+                    <button tabindex="0" type="submit" value="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
                 <ul class="suggestions">
                     <!-- Dynamically add suggestions  -->
                 </ul>
             </fieldset>
-            <button tabindex='0' type="submit">Search</button>
+            <!-- <button tabindex='0' type="submit" value="submit">Search</button> -->
         </form>
         <div class="crypto-info" id="crypto-info">
             <!-- Crypto Info Will be Appended Here! -->
@@ -29,7 +35,7 @@
     </main>
     
     <footer class="footer wrapper">
-        
+        <a class="juno" href="https://junocollege.com/">Copyright <span>&#169;</span> 2021 Juno College</a>
     </footer>
         
     <script src="./javascript/script.js"></script>
