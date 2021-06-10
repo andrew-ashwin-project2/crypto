@@ -61,12 +61,12 @@ cryptoApp.autoFill = (arrayData) => {
             cryptoApp.displayCrypto(dC);    
         }
     })
-    searchInput.addEventListener('keydown', function (event) {
-        if (event.key == 'ArrowDown') {
-            console.log('down arrow pressed');
-            suggestionsPanel.focus();
-        };
-    });
+    // searchInput.addEventListener('keydown', function (event) {
+    //     if (event.key == 'ArrowDown') {
+    //         console.log('down arrow pressed');
+    //         suggestionsPanel.focus();
+    //     };
+    // });
 };
 // Define displayCrypto Function
 cryptoApp.displayCrypto = function (dataFromAPI) {
@@ -74,26 +74,34 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
     const form = document.querySelector('form');
     const cryptoInfo = document.querySelector('#crypto-info');
     const inputArea = document.querySelector('input');
-    const userInput = inputArea.value;
+
     // Add event listener to listen for submit
     form.addEventListener('submit', (event) => {
         event.preventDefault();
+        const userInput = inputArea.value;
         // Loop Through Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
         dataFromAPI.forEach( (individualCrypto) => {
                 if (userInput.toLowerCase() == individualCrypto.name.toLowerCase()) {
                     cryptoInfo.innerHTML = `
-                        <figure id="">
+                        <figure>
                         <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
                         </figure>
                         <h2>${individualCrypto.name} (${individualCrypto.symbol.toUpperCase()})</h2>
                         <h2>Current Price: $${individualCrypto.current_price.toFixed(2)}</h2>
+                        <h3 class="negChecker">24 Hour Change: $${individualCrypto.price_change_percentage_24h.toFixed(2)}</h3>
                         <h3>24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
                         <h3>24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
-                        <h3>Change in Last 1 Hour: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
+                        <h3 class="negChecker">Change in Last 1 Hour: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
                         <h4>Market Cap: $${individualCrypto.market_cap}</h4>
                         <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4>
-                        <h5>Last Updated: ${individualCrypto.last_updated}</h5>
                         `;   
+                        const dailyPriceChange = document.querySelector('.negChecker');
+                        if (cryptoInfo.innerHTML.includes("$-")){
+                            console.log(cryptoInfo);
+                            dailyPriceChange.style.color="red";
+                        } else {
+                            dailyPriceChange.style.color="green";
+                        }
                         inputArea.value = '';
                 } else if (cryptoInfo.childElementCount == 0) {
                     cryptoInfo.innerHTML = `No results found for "${userInput}", please try again.`;
@@ -106,7 +114,6 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
 // Setup Init Function
 cryptoApp.init = () => {
     cryptoApp.getCrypto();
-    // cryptoApp.displayCrypto();
 }
 // Call Init
 cryptoApp.init();
