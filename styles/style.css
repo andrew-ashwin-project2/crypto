@@ -427,7 +427,7 @@ button:active {
   grid-template-columns: 0.7fr 0.45fr 0.45fr 0.4fr;
   grid-template-rows: 1.5fr 1.5fr 1.5fr;
   grid-template-areas: "gItem0 gItem1 gItem1 gItem3" "gItem0 gItem2 gItem2 gItem3" "gItem7 gItem4 gItem5 gItem6";
-  height: 30vh;
+  height: 44vh;
   width: 70%;
   margin: 200px auto 5rem;
   gap: 1rem;
