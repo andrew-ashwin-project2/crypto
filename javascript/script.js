@@ -104,12 +104,23 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                         }
                         inputArea.value = '';
                 } else {
-                    cryptoInfo.innerHTML = `No results found for "${userInput}", please try again.`;
+                    cryptoInfo.innerHTML = `<p>No results found for "${userInput}", please try again.</p>`;
                     inputArea.value = '';
                 };
 
     });
 };
+
+const mediaQuery = window.matchMedia('(max-width: 905px)')
+function placeholderChange(e) {}
+    if (mediaQuery.matches) {
+        // alert('media query matched')
+        document.querySelector('.search-input').placeholder = "Search Crypto";
+    }
+
+    // add event listener to this 
+    https://css-tricks.com/working-with-javascript-media-queries/
+
 
 // Setup Init Function
 cryptoApp.init = () => {

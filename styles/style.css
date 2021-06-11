@@ -240,7 +240,6 @@ body {
   background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   background-repeat: no-repeat;
   font-family: "Helvetica Neue", sans-serif;
-  height: 100%;
 }
 
 .wrapper {
@@ -398,7 +397,7 @@ button:active {
 
 .suggestions li {
   padding: 15px;
-  font-size: 20px;
+  font-size: 2rem;
   color: #fff;
   border-top: 1px solid #666;
   cursor: pointer;
@@ -429,7 +428,7 @@ button:active {
   grid-template-areas: "gItem0 gItem1 gItem1 gItem3" "gItem0 gItem2 gItem2 gItem3" "gItem7 gItem4 gItem5 gItem6";
   height: 44vh;
   width: 70%;
-  margin: 200px auto 5rem;
+  margin: 200px auto 250px;
   gap: 1rem;
 }
 
@@ -480,7 +479,8 @@ button:active {
 }
 
 figure {
-  max-width: 200px;
+  max-width: 150px;
+  margin: 0 auto;
   grid-area: gItem0;
 }
 
@@ -488,6 +488,72 @@ footer {
   text-align: center;
   font-size: 2rem;
   color: #666;
-  padding: 0;
-  margin: 0;
+  padding-bottom: 15px;
+}
+
+p {
+  font-size: 2rem;
+}
+
+@media (max-width: 900px) {
+  .crypto-info {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "gItem0 gItem3" "gItem1 gItem2" "gItem5 gItem4" "gItem7 gItem6";
+  }
+
+  .gItem1 {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 7rem;
+  }
+
+  fieldset {
+    width: 80%;
+  }
+
+  input[type=text] {
+    font-size: 1.8rem;
+  }
+
+  .suggestions li {
+    font-size: 1.8rem;
+  }
+
+  .crypto-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+
+  .gItem1 {
+    font-size: 3rem;
+  }
+
+  .gItem2, .gItem3, .gItem7 {
+    font-size: 2rem;
+  }
+
+  .gItem4, .gItem5, .gItem5 {
+    font-size: 1.5rem;
+  }
+
+  figure {
+    max-width: 100px;
+  }
 }
