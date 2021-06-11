@@ -19,5 +19,6 @@
         "focusring",
         "moz",
         "tabindex"
-    ]
+    ],
+    "liveServer.settings.port": 5501
 }

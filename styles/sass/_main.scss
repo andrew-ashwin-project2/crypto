@@ -232,3 +232,13 @@ footer {
 p {
     font-size: 2rem;
 }
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: contents;
+    transition: 250ms ease-in-out; 
+    transform: 150ms ease;
+}

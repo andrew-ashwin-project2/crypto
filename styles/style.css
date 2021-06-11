@@ -495,6 +495,18 @@ p {
   font-size: 2rem;
 }
 
+.hidden {
+  display: none;
+}
+
+.show {
+  display: contents;
+  -webkit-transition: 250ms ease-in-out;
+  transition: 250ms ease-in-out;
+  -webkit-transform: 150ms ease;
+          transform: 150ms ease;
+}
+
 @media (max-width: 900px) {
   .crypto-info {
     grid-template-columns: 1fr 1fr;
