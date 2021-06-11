@@ -90,7 +90,7 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                         <h2 class="gItem1">${individualCrypto.name.toUpperCase()} </h2>
                         <h2 class="gItem2">Current Price: $${individualCrypto.current_price.toFixed(2)}</h2>
                         <h3 class="gItem3 negChecker">24 Hour Change: $${individualCrypto.price_change_percentage_24h.toFixed(2)}</h3>
-                        <h3 class="gItem4">24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
+                        <h3 class="gItem4"> 24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
                         <h3 class="gItem5">24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
                         <h3 class="gItem6 negChecker">1 Hour Change: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
                         <h4 class="gItem7">(${individualCrypto.symbol.toUpperCase()})</h4>
@@ -104,10 +104,8 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                         }
                         inputArea.value = '';
                 } else {
-                    cryptoInfo.innerHTML = `No results found for "${userInput}", please try again.`;
-                    inputArea.value = '';
+                        cryptoInfo.innerHTML = `No results found for "${userInput}", please try again.`;
                 };
-
     });
 };
 
