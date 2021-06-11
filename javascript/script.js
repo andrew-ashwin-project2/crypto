@@ -84,17 +84,16 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
         console.log(individualCrypto);
                 if (individualCrypto) {
                     cryptoInfo.innerHTML = `
-                        <figure>
+                        <figure class="gItem0">
                         <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
                         </figure>
-                        <h2>${individualCrypto.name} (${individualCrypto.symbol.toUpperCase()})</h2>
-                        <h2>Current Price: $${individualCrypto.current_price.toFixed(2)}</h2>
-                        <h3 class="negChecker">24 Hour Change: $${individualCrypto.price_change_percentage_24h.toFixed(2)}</h3>
-                        <h3>24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
-                        <h3>24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
-                        <h3 class="negChecker">Change in Last 1 Hour: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
-                        <h4>Market Cap: $${individualCrypto.market_cap}</h4>
-                        <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4>
+                        <h2 class="gItem1">${individualCrypto.name.toUpperCase()} </h2>
+                        <h2 class="gItem2">Current Price: $${individualCrypto.current_price.toFixed(2)}</h2>
+                        <h3 class="gItem3 negChecker">24 Hour Change: $${individualCrypto.price_change_percentage_24h.toFixed(2)}</h3>
+                        <h3 class="gItem4">24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
+                        <h3 class="gItem5">24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
+                        <h3 class="gItem6 negChecker">1 Hour Change: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
+                        <h4 class="gItem7">(${individualCrypto.symbol.toUpperCase()})</h4>
                         `;   
                         if (cryptoInfo.innerHTML.includes("$-")){
                             const dailyPriceChange = document.querySelector('.negChecker');
@@ -121,3 +120,6 @@ cryptoApp.init();
 
 // Don't call getCrypto in init.
 // Separate displayCrypto code.
+
+{/* <h4>Market Cap: $${individualCrypto.market_cap}</h4>
+                        <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4> */}

@@ -1,15 +1,14 @@
-body {
+body{
     color: #fff; 
     background-color: #2d3436;
     background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     background-repeat: no-repeat;
     font-family: 'Helvetica Neue', sans-serif;
-    height: 100%;
 }
 
-body, html {
-    height: 100%;
-}
+// body, html {
+//     // height: 100%;
+// }
 
 .wrapper {
     max-width: 1200px;
@@ -72,11 +71,7 @@ fieldset {
     background: #141414;
     border-radius: 5px;
     overflow: auto;
-    // position: relative;
     position: absolute;
-    // top: 50%;
-    // left: 50%;
-    // transform: translate(-50%, -50%);
 }
 
 
@@ -166,33 +161,70 @@ button:active {
 // crypto info styles
 
 .crypto-info {
+    display: grid;
+    grid-template-columns: 0.7fr 0.45fr 0.45fr 0.4fr;
+    grid-template-rows: 1.5fr 1.5fr 1.5fr;
+    grid-template-areas: 
+        "gItem0 gItem1 gItem1 gItem3"
+        "gItem0 gItem2 gItem2 gItem3"
+        "gItem7 gItem4 gItem5 gItem6";
+        
+    height: 40vh;
+    width: 70%;
+    margin: 200px auto 5rem;
+    gap: 1rem;
+}
+
+.gItem0, .gItem1, .gItem2, .gItem3, .gItem4, .gItem5, .gItem6, .gItem7 {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    margin-top: 200px;
-    // height: 250px;
-    // justify-content: space-between;
-    
-    
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: 50px;
-//     gap: 50px;
-// }
+}
+
+.gItem6 {
+    grid-area: gItem6;
+}
+
+.gItem7 {
+    grid-area: gItem7;
+    margin: 0 auto;
+    font-size: 3rem;
+}
+
+.gItem1 {
+    grid-area: gItem1;
+    font-size: 4rem;
+    max-width: 250px;
+}
+
+.gItem2 {
+    grid-area: gItem2;
+    font-size: 3rem;
+}
+
+.gItem3 {
+    grid-area: gItem3;
+    font-size: 3rem;
+}
+
+.gItem4 {
+    grid-area: gItem4;
+}
+
+.gItem5 {
+    grid-area: gItem5;
 }
 
 
-h2 {
-    font-size: 2.5rem;
-}
+
 
 h3 {
     font-size: 2rem;
+
 }
 
 h4 {
     font-size: 1.5rem;
+    
 }
 
 h1, h2, h3, h4 {
@@ -200,9 +232,8 @@ h1, h2, h3, h4 {
 }
 
 figure {
-    height: 75px;
-    width: 75px;
-    margin: 0 auto;
+    max-width: 200px;
+    grid-area: gItem0;
 }
 
 footer {
@@ -210,7 +241,6 @@ footer {
     font-size: 2rem;
     color: #666;
     margin: 0 auto;
-    padding-top: 70px;
     // position: absolute;
     // bottom: 0;
     // left: 70px;
