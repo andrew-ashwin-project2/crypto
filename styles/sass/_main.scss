@@ -1,9 +1,9 @@
 body{
     color: #fff; 
-    background-color: #2d3436;
     background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     background-repeat: no-repeat;
     font-family: 'Helvetica Neue', sans-serif;
+    height: 100vh;
 }
 
 // body, html {
@@ -44,7 +44,7 @@ form {
 }
 
 header{
-    margin-top: 50px;
+    padding-top: 50px;
     h1{
         color: #fff;
         font-size: 10rem;
@@ -149,9 +149,8 @@ button:active {
         width: 50px;
         padding-right: 1rem;
         padding-left: 10px;
-    };
-
-};
+    }
+}
 
 .suggestions li:hover,
 .suggestions li:focus-within {
@@ -169,7 +168,7 @@ button:active {
         "gItem0 gItem2 gItem2 gItem3"
         "gItem7 gItem4 gItem5 gItem6";
         
-    height: 40vh;
+    height: 30vh;
     width: 70%;
     margin: 200px auto 5rem;
     gap: 1rem;
@@ -178,16 +177,6 @@ button:active {
 .gItem0, .gItem1, .gItem2, .gItem3, .gItem4, .gItem5, .gItem6, .gItem7 {
     display: flex;
     align-items: center;
-}
-
-.gItem6 {
-    grid-area: gItem6;
-}
-
-.gItem7 {
-    grid-area: gItem7;
-    margin: 0 auto;
-    font-size: 3rem;
 }
 
 .gItem1 {
@@ -208,27 +197,23 @@ button:active {
 
 .gItem4 {
     grid-area: gItem4;
+    font-size: 2rem;
 }
 
 .gItem5 {
     grid-area: gItem5;
-}
-
-
-
-
-h3 {
     font-size: 2rem;
-
 }
 
-h4 {
-    font-size: 1.5rem;
-    
+.gItem6 {
+    grid-area: gItem6;
+    font-size: 2rem;
 }
 
-h1, h2, h3, h4 {
-    padding-top: 0 auto;
+.gItem7 {
+    grid-area: gItem7;
+    margin: 0 auto;
+    font-size: 3rem;
 }
 
 figure {
@@ -240,7 +225,9 @@ footer {
     text-align: center;
     font-size: 2rem;
     color: #666;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
+    // margin: 0 auto;
     // position: absolute;
     // bottom: 0;
     // left: 70px;
