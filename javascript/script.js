@@ -80,8 +80,9 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
         event.preventDefault();
         const userInput = inputArea.value;
         // Loop Through Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
-        dataFromAPI.forEach( (individualCrypto) => {
-                if (userInput.toLowerCase() == individualCrypto.name.toLowerCase()) {
+        const individualCrypto = dataFromAPI.find(crypto => userInput.toLowerCase() == crypto.name.toLowerCase());
+        console.log(individualCrypto);
+                if (individualCrypto) {
                     cryptoInfo.innerHTML = `
                         <figure>
                         <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
@@ -95,19 +96,19 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                         <h4>Market Cap: $${individualCrypto.market_cap}</h4>
                         <h4>Market Cap Rank: ${individualCrypto.market_cap_rank}/250</h4>
                         `;   
-                        const dailyPriceChange = document.querySelector('.negChecker');
                         if (cryptoInfo.innerHTML.includes("$-")){
+                            const dailyPriceChange = document.querySelector('.negChecker');
                             console.log(cryptoInfo);
                             dailyPriceChange.style.color="red";
                         } else {
                             dailyPriceChange.style.color="green";
                         }
                         inputArea.value = '';
-                } else if (cryptoInfo.childElementCount == 0) {
+                } else {
                     cryptoInfo.innerHTML = `No results found for "${userInput}", please try again.`;
                     inputArea.value = '';
                 };
-        })  
+
     });
 };
 
@@ -117,3 +118,6 @@ cryptoApp.init = () => {
 }
 // Call Init
 cryptoApp.init();
+
+// Don't call getCrypto in init.
+// Separate displayCrypto code.
