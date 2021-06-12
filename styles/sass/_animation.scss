@@ -4,6 +4,7 @@
     -moz-animation: fadeIn linear 2.5s;
     -o-animation: fadeIn linear 2.5s;
     -ms-animation: fadeIn linear 2.5s;
+    animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {

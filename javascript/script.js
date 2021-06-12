@@ -78,8 +78,9 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
         
         const individualCrypto = dataFromAPI.find( (crypto) => userInput.toLowerCase() == crypto.name.toLowerCase());
         cryptoInfo.classList.remove('animate');
-        cryptoInfo.classList.add('animate');
-
+        setTimeout(() => {
+            cryptoInfo.classList.add('animate');
+        }, 0);
         if (individualCrypto) {
             cryptoInfo.innerHTML = `
                 <figure class="icon">
