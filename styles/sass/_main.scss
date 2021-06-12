@@ -123,8 +123,7 @@ button:active {
 
 .suggestions {
     // border-top: 2px solid black;
-    margin: 0;
-    padding: 0;
+    @include remove-padding-margin;
     max-height: 200px;
     overflow: auto;
     position: relative;
@@ -160,8 +159,8 @@ button:active {
     grid-template-columns: 0.7fr 0.45fr 0.45fr 0.4fr;
     grid-template-rows: 1.5fr 1.5fr 1.5fr;
     grid-template-areas: 
-        "gItem0 gItem1 gItem1 gItem3"
-        "gItem0 gItem2 gItem2 gItem3"
+        "gItem1 gItem1 gItem1 gItem3"
+        "gItem1 gItem2 gItem2 gItem3"
         "gItem7 gItem4 gItem5 gItem6";
         
     height: 44vh;
@@ -231,4 +230,3 @@ p {
     display: block;
     
 }
-
