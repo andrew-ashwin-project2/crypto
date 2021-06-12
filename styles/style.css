@@ -239,8 +239,8 @@ body {
   color: #fff;
   background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: "Helvetica Neue", sans-serif;
-  height: 100%;
 }
 
 .wrapper {
@@ -315,6 +315,7 @@ form fieldset {
   border-radius: 5px;
   overflow: auto;
   position: absolute;
+  z-index: 100;
 }
 
 .search-bar {
@@ -393,6 +394,7 @@ button:active {
   overflow: auto;
   position: relative;
   width: 100%;
+  z-index: 10;
 }
 
 .suggestions li {
@@ -430,6 +432,7 @@ button:active {
   margin: 200px auto 250px;
   grid-column-gap: 3rem;
   grid-row-gap: 4rem;
+  opacity: 0;
 }
 
 .icon,
@@ -504,6 +507,8 @@ footer {
   -moz-animation: fadeIn linear 2.5s;
   -o-animation: fadeIn linear 2.5s;
   -ms-animation: fadeIn linear 2.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 
 @keyframes fadeIn {
@@ -555,7 +560,7 @@ footer {
     font-size: 6.5rem;
   }
 
-  fieldset {
+  form fieldset {
     width: 80%;
   }
 
