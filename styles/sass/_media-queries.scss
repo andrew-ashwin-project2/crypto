@@ -1,73 +1,79 @@
-
-// media queries
-
+// Media Queries
 @media (max-width: 900px) {
     .crypto-info {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr;
         grid-template-areas:
-            "gItem0 gItem3"
-            "gItem1 gItem2"
-            "gItem5 gItem4"
-            "gItem7 gItem6";
+            "icon change24"
+            "name price"
+            "low24 high24"
+            "symbol change1";
         gap: 50px;
-    }
+    };
 
-    .gItem1 {
+    header h1 {
+        font-size: 9rem;
+    };
+
+    .crypto-info {
+        gap: 1rem;
+    };
+
+    .name {
         justify-content: center;
-    }
-}
+        text-align: center;
+    };
+
+    .low24 {
+        margin: 0 auto;
+        text-align: center;
+    };
+};
 
 @media (max-width: 600px) {
 
     header h1 {
-        font-size: 7rem;
-    }
+        font-size: 6.5rem;
+    };
 
     fieldset {
         width: 80%
-    }
+    };
 
     input[type="text"] {
         font-size: 1.8rem;
-    }
+    };
 
     .suggestions li {
         font-size: 1.8rem;
-    }
+    };
 
     .crypto-info {
-        // grid-template-columns: 1fr;
-        // grid-template-rows: 1fr;
-        // grid-template-areas: 
-        //     "gItem0"
-        //     "gItem1"
-        //     "gItem2"
-        //     "gItem3"
-        //     "gItem5"
-        //     "gItem4"
-        //     "gItem6"
-        //     "gItem7";
-        
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-    }
+    };
 
-    .gItem1 {
+    .name {
         font-size: 3rem;
-    }
+    };
 
-    .gItem2, .gItem3, .gItem7 {
+    .price, .change24 {
         font-size: 2rem;
-    }
+        text-align: center;
+    };
 
-    .gItem4, .gItem5, .gItem5 {
+    .low24, .high24 {
+        font-size: 1.75rem;
+        text-align: center;
+    };
+
+    .change1, .symbol {
         font-size: 1.5rem;
-    }
+    };
 
     figure {
         max-width: 100px;
-    }
-}
+    };
+};
