@@ -493,25 +493,40 @@ footer {
 
 p {
   font-size: 2rem;
+  font-style: italic;
+  display: block;
 }
 
-.hidden {
-  display: none;
+.animate {
+  animation: fadeIn linear 0.5s;
+  -webkit-animation: fadeIn linear 0.5s;
+  -moz-animation: fadeIn linear 0.5s;
+  -o-animation: fadeIn linear 0.5s;
+  -ms-animation: fadeIn linear 0.5s;
 }
 
-.show {
-  display: contents;
-  -webkit-transition: 250ms ease-in-out;
-  transition: 250ms ease-in-out;
-  -webkit-transform: 150ms ease;
-          transform: 150ms ease;
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @media (max-width: 900px) {
   .crypto-info {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas: "gItem0 gItem3" "gItem1 gItem2" "gItem5 gItem4" "gItem7 gItem6";
+    gap: 50px;
   }
 
   .gItem1 {

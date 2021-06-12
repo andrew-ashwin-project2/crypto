@@ -79,9 +79,11 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const userInput = inputArea.value;
-        // Loop Through Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
+        
+        // Find crypto in Array. If userInput = Crypto, Add InnerHTML That Include Corresponding Values
         const individualCrypto = dataFromAPI.find(crypto => userInput.toLowerCase() == crypto.name.toLowerCase());
-        console.log(individualCrypto);
+        cryptoInfo.classList.remove('animate');
+        cryptoInfo.classList.add('animate');
                 if (individualCrypto) {
                     cryptoInfo.innerHTML = `
                         <figure class="gItem0">
@@ -95,8 +97,8 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                         <h3 class="gItem6 negChecker">1 Hour Change: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
                         <h4 class="gItem7">(${individualCrypto.symbol.toUpperCase()})</h4>
                         `;   
+                        const dailyPriceChange = document.querySelector('.negChecker');
                         if (cryptoInfo.innerHTML.includes("$-")){
-                            const dailyPriceChange = document.querySelector('.negChecker');
                             console.log(cryptoInfo);
                             dailyPriceChange.style.color="red";
                         } else {
@@ -110,15 +112,18 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
     });
 };
 
-const mediaQuery = window.matchMedia('(max-width: 905px)')
-function placeholderChange(e) {}
-    if (mediaQuery.matches) {
-        // alert('media query matched')
-        document.querySelector('.search-input').placeholder = "Search Crypto";
+const mediaQuery = window.matchMedia('(max-width: 905px)');
+mediaQuery.addEventListener('change', event => {
+    const placeholderChange = document.querySelector('.search-input');
+    if (event.matches) {
+        placeholderChange.placeholder = "Search Crypto";
+    } else {
+        placeholderChange.placeholder = "Which Crypto Do You Want To Know About?";
     }
+})
 
-    // add event listener to this 
-    https://css-tricks.com/working-with-javascript-media-queries/
+
+
 
 
 // Setup Init Function
