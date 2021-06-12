@@ -8,7 +8,8 @@
             "name price"
             "low24 high24"
             "symbol change1";
-        gap: 50px;
+        grid-row-gap: 50px;
+        grid-column-gap: 5rem;
     };
 
     header h1 {

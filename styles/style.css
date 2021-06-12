@@ -532,7 +532,6 @@ footer {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-areas: "icon change24" "name price" "low24 high24" "symbol change1";
-    gap: 50px;
   }
 
   header h1 {
@@ -540,7 +539,8 @@ footer {
   }
 
   .crypto-info {
-    gap: 1rem;
+    grid-row-gap: 50px;
+    grid-column-gap: 5rem;
   }
 
   .name {
