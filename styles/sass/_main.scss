@@ -3,12 +3,7 @@ body{
     background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     background-repeat: no-repeat;
     font-family: 'Helvetica Neue', sans-serif;
-    // height: 100%;
 }
-
-// body, html {
-//     // height: 100%;
-// }
 
 .wrapper {
     max-width: 1200px;
@@ -236,40 +231,4 @@ p {
     display: block;
     
 }
-
-// animation 
-
-.animate {
-    animation: fadeIn linear 0.5s;
-    -webkit-animation: fadeIn linear 0.5s;
-    -moz-animation: fadeIn linear 0.5s;
-    -o-animation: fadeIn linear 0.5s;
-    -ms-animation: fadeIn linear 0.5s;
-}
-
-@keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
-@-moz-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
-@-webkit-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
-@-o-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
-@-ms-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-}
-
 
