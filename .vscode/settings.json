@@ -14,5 +14,12 @@
     "liveSassCompile.settings.autoprefix": [
         "> 1%",
         "last 2 versions"
-    ]
+    ],
+    "cSpell.ignoreWords": [
+        "focusring",
+        "mixins",
+        "moz",
+        "tabindex"
+    ],
+    "liveServer.settings.port": 5501
 }

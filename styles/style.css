@@ -240,6 +240,7 @@ body {
   background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   background-repeat: no-repeat;
   font-family: "Helvetica Neue", sans-serif;
+  height: 100%;
 }
 
 .wrapper {
@@ -271,8 +272,14 @@ h4,
 h5,
 p,
 form {
-  margin: 0;
   padding: 0;
+  margin: 0;
+}
+
+p {
+  font-size: 2rem;
+  font-style: italic;
+  display: block;
 }
 
 header {
@@ -301,51 +308,13 @@ form {
       -ms-flex-align: center;
           align-items: center;
 }
-
-fieldset {
+form fieldset {
   width: 60%;
   margin: 70px auto 50px;
   background: #141414;
   border-radius: 5px;
   overflow: auto;
   position: absolute;
-}
-
-input[type=text] {
-  font-size: 2rem;
-  background: transparent;
-  border: 0;
-  color: #fff;
-  padding: 15px;
-  width: 80%;
-}
-input[type=text]:focus {
-  outline: none;
-}
-
-::-webkit-input-placeholder {
-  color: #fff;
-  opacity: 0.7;
-}
-
-::-moz-placeholder {
-  color: #fff;
-  opacity: 0.7;
-}
-
-:-ms-input-placeholder {
-  color: #fff;
-  opacity: 0.7;
-}
-
-::-ms-input-placeholder {
-  color: #fff;
-  opacity: 0.7;
-}
-
-::placeholder {
-  color: #fff;
-  opacity: 0.7;
 }
 
 .search-bar {
@@ -355,6 +324,37 @@ input[type=text]:focus {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+.search-bar input[type=text] {
+  font-size: 2rem;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  padding: 15px;
+  width: 80%;
+}
+.search-bar input[type=text]:focus {
+  outline: none;
+}
+.search-bar input[type=text] ::-webkit-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+.search-bar input[type=text] ::-moz-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+.search-bar input[type=text] :-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+.search-bar input[type=text] ::-ms-input-placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+.search-bar input[type=text] ::placeholder {
+  color: #fff;
+  opacity: 0.7;
 }
 
 button {
@@ -387,8 +387,8 @@ button:active {
 }
 
 .suggestions {
-  margin: 0;
   padding: 0;
+  margin: 0;
   max-height: 200px;
   overflow: auto;
   position: relative;
@@ -425,14 +425,21 @@ button:active {
   display: grid;
   grid-template-columns: 0.7fr 0.45fr 0.45fr 0.4fr;
   grid-template-rows: 1.5fr 1.5fr 1.5fr;
-  grid-template-areas: "gItem0 gItem1 gItem1 gItem3" "gItem0 gItem2 gItem2 gItem3" "gItem7 gItem4 gItem5 gItem6";
-  height: 44vh;
+  grid-template-areas: "icon name name change24" "icon price price change24" "symbol low24 high24 change1";
   width: 70%;
   margin: 200px auto 250px;
-  gap: 1rem;
+  grid-column-gap: 3rem;
+  grid-row-gap: 4rem;
 }
 
-.gItem0, .gItem1, .gItem2, .gItem3, .gItem4, .gItem5, .gItem6, .gItem7 {
+.icon,
+.name,
+.price,
+.change24,
+.low24,
+.high24,
+.change1,
+.symbol {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -441,47 +448,47 @@ button:active {
           align-items: center;
 }
 
-.gItem1 {
-  grid-area: gItem1;
+figure {
+  max-width: 150px;
+  margin: 0 auto;
+  grid-area: icon;
+}
+
+.name {
+  grid-area: name;
   font-size: 4rem;
   max-width: 250px;
 }
 
-.gItem2 {
-  grid-area: gItem2;
+.price {
+  grid-area: price;
   font-size: 3rem;
 }
 
-.gItem3 {
-  grid-area: gItem3;
+.change24 {
+  grid-area: change24;
   font-size: 3rem;
 }
 
-.gItem4 {
-  grid-area: gItem4;
+.low24 {
+  grid-area: low24;
   font-size: 2rem;
 }
 
-.gItem5 {
-  grid-area: gItem5;
+.high24 {
+  grid-area: high24;
   font-size: 2rem;
 }
 
-.gItem6 {
-  grid-area: gItem6;
+.change1 {
+  grid-area: change1;
   font-size: 2rem;
 }
 
-.gItem7 {
-  grid-area: gItem7;
+.symbol {
+  grid-area: symbol;
   margin: 0 auto;
   font-size: 3rem;
-}
-
-figure {
-  max-width: 150px;
-  margin: 0 auto;
-  grid-area: gItem0;
 }
 
 footer {
@@ -491,18 +498,12 @@ footer {
   padding-bottom: 15px;
 }
 
-p {
-  font-size: 2rem;
-  font-style: italic;
-  display: block;
-}
-
 .animate {
-  animation: fadeIn linear 0.5s;
-  -webkit-animation: fadeIn linear 0.5s;
-  -moz-animation: fadeIn linear 0.5s;
-  -o-animation: fadeIn linear 0.5s;
-  -ms-animation: fadeIn linear 0.5s;
+  animation: fadeIn linear 2.5s;
+  -webkit-animation: fadeIn linear 2.5s;
+  -moz-animation: fadeIn linear 2.5s;
+  -o-animation: fadeIn linear 2.5s;
+  -ms-animation: fadeIn linear 2.5s;
 }
 
 @keyframes fadeIn {
@@ -525,19 +526,33 @@ p {
   .crypto-info {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "gItem0 gItem3" "gItem1 gItem2" "gItem5 gItem4" "gItem7 gItem6";
+    grid-template-areas: "icon change24" "name price" "low24 high24" "symbol change1";
     gap: 50px;
   }
 
-  .gItem1 {
+  header h1 {
+    font-size: 9rem;
+  }
+
+  .crypto-info {
+    gap: 1rem;
+  }
+
+  .name {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    text-align: center;
+  }
+
+  .low24 {
+    margin: 0 auto;
+    text-align: center;
   }
 }
 @media (max-width: 600px) {
   header h1 {
-    font-size: 7rem;
+    font-size: 6.5rem;
   }
 
   fieldset {
@@ -568,15 +583,21 @@ p {
             align-items: center;
   }
 
-  .gItem1 {
+  .name {
     font-size: 3rem;
   }
 
-  .gItem2, .gItem3, .gItem7 {
+  .price, .change24 {
     font-size: 2rem;
+    text-align: center;
   }
 
-  .gItem4, .gItem5, .gItem5 {
+  .low24, .high24 {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  .change1, .symbol {
     font-size: 1.5rem;
   }
 
