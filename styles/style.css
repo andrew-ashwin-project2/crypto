@@ -235,12 +235,13 @@ html {
   overflow: hidden;
 }
 
-body {
+html {
   color: #fff;
   background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Helvetica Neue", sans-serif;
+  background-color: black;
 }
 
 .wrapper {
@@ -427,11 +428,10 @@ button:active {
   display: grid;
   grid-template-columns: 0.7fr 0.45fr 0.45fr 0.4fr;
   grid-template-rows: 1.5fr 1.5fr 1.5fr;
-  grid-template-areas: "icon name name change24" "icon price price change24" "symbol low24 high24 change1";
+  grid-template-areas: "icon name name percent" "icon price price percent" "change1 low24 high24 change24";
   width: 70%;
-  margin: 200px auto 250px;
-  grid-column-gap: 3rem;
-  grid-row-gap: 4rem;
+  margin: 200px auto 120px;
+  gap: 4rem;
   opacity: 0;
 }
 
@@ -442,7 +442,7 @@ button:active {
 .low24,
 .high24,
 .change1,
-.symbol {
+.percent {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -459,7 +459,7 @@ figure {
 
 .name {
   grid-area: name;
-  font-size: 4rem;
+  font-size: 3.5rem;
   max-width: 250px;
 }
 
@@ -468,8 +468,9 @@ figure {
   font-size: 3rem;
 }
 
-.change24 {
-  grid-area: change24;
+.percent {
+  grid-area: percent;
+  margin: 0 auto;
   font-size: 3rem;
 }
 
@@ -483,15 +484,15 @@ figure {
   font-size: 2rem;
 }
 
-.change1 {
-  grid-area: change1;
+.change24 {
+  grid-area: change24;
   font-size: 2rem;
 }
 
-.symbol {
-  grid-area: symbol;
-  margin: 0 auto;
-  font-size: 3rem;
+.change1 {
+  grid-area: change1;
+  font-size: 2rem;
+  padding-left: 3rem;
 }
 
 footer {
@@ -502,11 +503,11 @@ footer {
 }
 
 .animate {
-  animation: fadeIn linear 2.5s;
-  -webkit-animation: fadeIn linear 2.5s;
-  -moz-animation: fadeIn linear 2.5s;
-  -o-animation: fadeIn linear 2.5s;
-  -ms-animation: fadeIn linear 2.5s;
+  animation: fadeIn ease-in-out 1.75s;
+  -webkit-animation: fadeIn ease-in 1.75s;
+  -moz-animation: fadeIn ease-in 1.75s;
+  -o-animation: fadeIn ease-in 1.75s;
+  -ms-animation: fadeIn ease-in 1.75s;
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
@@ -531,28 +532,32 @@ footer {
   .crypto-info {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-areas: "icon change24" "name price" "low24 high24" "symbol change1";
+    grid-template-areas: "icon percent" "name price" "low24 high24" "change24 change1";
+    grid-row-gap: 50px;
+    grid-column-gap: 7rem;
+    margin-bottom: 5rem;
   }
 
   header h1 {
     font-size: 9rem;
   }
 
-  .crypto-info {
-    grid-row-gap: 50px;
-    grid-column-gap: 5rem;
+  figure {
+    max-width: 100px;
   }
 
-  .name {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    text-align: center;
-  }
-
-  .low24 {
+  .name, .price, .percent {
+    font-size: 2.5rem;
     margin: 0 auto;
     text-align: center;
+  }
+
+  .low24, .high24, .change24, .change1 {
+    font-size: 2.2rem;
+    margin: 0 auto;
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 0;
   }
 }
 @media (max-width: 600px) {
@@ -586,27 +591,24 @@ footer {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+    gap: 3rem;
+  }
+
+  figure {
+    max-width: 75px;
   }
 
   .name {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
 
-  .price, .change24 {
+  .price, .percent {
     font-size: 2rem;
     text-align: center;
   }
 
-  .low24, .high24 {
+  .low24, .high24, .change24, .change1 {
     font-size: 1.75rem;
     text-align: center;
-  }
-
-  .change1, .symbol {
-    font-size: 1.5rem;
-  }
-
-  figure {
-    max-width: 100px;
   }
 }

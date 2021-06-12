@@ -1,11 +1,10 @@
-body{
+html{
     color: #fff; 
     background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Helvetica Neue', sans-serif;
-    // height: 100%;
-    // background-color: black;
+    background-color: black;
 };
 
 .wrapper {
@@ -164,13 +163,12 @@ button:active {
     grid-template-columns: 0.7fr 0.45fr 0.45fr 0.4fr;
     grid-template-rows: 1.5fr 1.5fr 1.5fr;
     grid-template-areas: 
-        "icon name name change24"
-        "icon price price change24"
-        "symbol low24 high24 change1";
+        "icon name name percent"
+        "icon price price percent"
+        "change1 low24 high24 change24";
     width: 70%;
-    margin: 200px auto 250px;
-    grid-column-gap: 3rem;
-    grid-row-gap: 4rem;
+    margin: 200px auto 120px;
+    gap: 4rem;
     opacity: 0;
 }
 
@@ -181,7 +179,7 @@ button:active {
 .low24, 
 .high24, 
 .change1, 
-.symbol {
+.percent {
     display: flex;
     align-items: center;
 }
@@ -194,7 +192,7 @@ figure {
 
 .name {
     grid-area: name;
-    font-size: 4rem;
+    font-size: 3.5rem;
     max-width: 250px;
 }
 
@@ -203,8 +201,9 @@ figure {
     font-size: 3rem;
 }
 
-.change24 {
-    grid-area: change24;
+.percent {
+    grid-area: percent;
+    margin: 0 auto;
     font-size: 3rem;
 }
 
@@ -218,15 +217,15 @@ figure {
     font-size: 2rem;
 }
 
-.change1 {
-    grid-area: change1;
+.change24 {
+    grid-area: change24;
     font-size: 2rem;
 }
 
-.symbol {
-    grid-area: symbol;
-    margin: 0 auto;
-    font-size: 3rem;
+.change1 {
+    grid-area: change1;
+    font-size: 2rem;
+    padding-left: 3rem;
 }
 
 // Footer
