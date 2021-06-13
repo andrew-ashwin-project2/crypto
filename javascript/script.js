@@ -28,7 +28,8 @@ cryptoApp.autoFill = (arrayData) => {
         const input = searchInput.value.toLowerCase();
         const suggestions = arrayData.filter((specificCrypto) => {
             return specificCrypto.id.toLowerCase().startsWith(input) ||
-            specificCrypto.name.toLowerCase().startsWith(input) 
+            specificCrypto.name.toLowerCase().startsWith(input) ||
+            specificCrypto.symbol.toLowerCase().startsWith(input)
         });
         
         suggestions.forEach(function (suggested) {
@@ -82,19 +83,21 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
             cryptoInfo.classList.add('animate');
         }, 0);
         if (individualCrypto) {
+            console.log(individualCrypto);
             cryptoInfo.innerHTML = `
                 <figure class="icon">
                 <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
                 </figure>
                 <h2 class="name">${individualCrypto.name.toUpperCase()} </h2>
                 <h2 class="price">Price: $${individualCrypto.current_price.toFixed(2)}</h2>
-                <h3 class="change24">24 Hour Change: $${individualCrypto.price_change_percentage_24h.toFixed(2)}</h3>
+                <h3 class="percent">24 Hour Difference: ${individualCrypto.price_change_percentage_24h.toFixed(2)}%</h3>
                 <h3 class="low24"> 24 Hour Low: $${individualCrypto.low_24h.toFixed(2)}</h3>
                 <h3 class="high24">24 Hour High: $${individualCrypto.high_24h.toFixed(2)}</h3>
+                <h3 class="change24">24 Hour Change: $${individualCrypto.price_change_24h.toFixed(2)}</h3>
                 <h3 class="change1">1 Hour Change: $${individualCrypto.price_change_percentage_1h_in_currency.toFixed(2)}</h3>
-                <h4 class="symbol">(${individualCrypto.symbol.toUpperCase()})</h4>
                 `;   
 
+                // Requires separate functions. 24 hour and 1 hour change won't both be positive or negative.
                 const dailyPriceChange = document.querySelector('.change24');
                 if (dailyPriceChange.innerHTML.includes("$-")){
                     dailyPriceChange.style.color="red";
@@ -102,13 +105,21 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                     dailyPriceChange.style.color="green";
                 };
                 
-                // Requires separate functions. 24 hour and 1 hour change won't both be positive or negative.
+
                 const hourPriceChange = document.querySelector('.change1');
                 if (hourPriceChange.innerHTML.includes("$-")){
                     hourPriceChange.style.color="red";
                 } else {
                     hourPriceChange.style.color="green";
                 };
+
+                const percentChange = document.querySelector('.percent');
+                if (percentChange.innerHTML.includes("-")){
+                    percentChange.style.color="red";
+                } else {
+                    percentChange.style.color="green";
+                };
+
 
                 suggestions.innerHTML = "";
                 inputArea.value = '';
@@ -120,6 +131,7 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
     });
 };
 
+// Placeholder will be changed on load, not when resizing. That's the intended functionality.
 cryptoApp.placeholderChanger = () => {
     const placeholderChange = document.querySelector('.search-input');
     if (screen.width < 960 && screen.width > 400) {
