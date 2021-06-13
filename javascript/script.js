@@ -21,11 +21,15 @@ cryptoApp.getCrypto = () => {
 
 // Suggestion Box Related Function 
 cryptoApp.autoFill = (arrayData) => {
-    const searchInput = document.getElementById('submit');
+    const searchBar = document.getElementById('submit');
     const suggestionsPanel = document.querySelector('.suggestions');
-    searchInput.addEventListener('keyup', function () {
+    const formArea = document.querySelector('fieldset');
+    // const nextSibling = document.querySelector('.third-item').nextElementSibling;
+
+
+    searchBar.addEventListener('keyup', function () {
         suggestionsPanel.innerHTML = '';
-        const input = searchInput.value.toLowerCase();
+        const input = searchBar.value.toLowerCase();
         const suggestions = arrayData.filter((specificCrypto) => {
             return specificCrypto.id.toLowerCase().startsWith(input) ||
             specificCrypto.name.toLowerCase().startsWith(input) ||
@@ -45,26 +49,55 @@ cryptoApp.autoFill = (arrayData) => {
 
     suggestionsPanel.addEventListener('click', function (event) {
         let userChoice = event.target.innerText;
-        searchInput.value = `${userChoice}`;
+        searchBar.value = `${userChoice}`;
         suggestionsPanel.innerHTML = "";
-        searchInput.focus();
+        searchBar.focus();
     });
 
     suggestionsPanel.addEventListener('keyup', function (event) {
         if (event.keyCode === 13) {
             let userChoice = event.target.innerText;
-            searchInput.value = `${userChoice}`;
+            searchBar.value = `${userChoice}`;
             suggestionsPanel.innerHTML = "";
-            searchInput.focus(); 
+            searchBar.focus(); 
         }
     });
     
     document.addEventListener('keyup', function (event) {
         if (event.key === "Escape") {
             suggestionsPanel.innerHTML = "";   
+            searchBar.focus(); 
         }
     });
+
+    let arrowCount = 0;
+    formArea.addEventListener('keyup', function (event) {
+        if (event.key === "ArrowDown" && document.activeElement === suggestionsPanel.lastChild) {
+            arrowCount++
+            suggestionsPanel.lastChild.focus();
+            if (arrowCount > 1) {
+                searchBar.focus();
+                event.target.removeEventListener('keyup');
+                document.addEventListener('keyup');
+            }
+        };
+
+        // console.log(suggestionsPanel.lastChild);
+        if (event.key === "ArrowDown" && document.activeElement === searchBar) {
+            suggestionsPanel.firstElementChild.focus(); 
+        } else if (event.key === "ArrowDown" && document.activeElement !== searchBar) {
+            if (document.activeElement == suggestionsPanel.lastChild) {
+                return 
+            }
+            document.activeElement.nextSibling.focus();
+        } else if (event.key === "ArrowUp" && document.activeElement !== searchBar) {
+            document.activeElement.previousSibling.focus();
+        } 
+    });
 };
+
+
+
 
 // Displaying Info on Page Related Function
 cryptoApp.displayCrypto = function (dataFromAPI) {
