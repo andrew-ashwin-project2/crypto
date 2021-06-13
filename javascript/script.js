@@ -23,51 +23,62 @@ cryptoApp.getCrypto = () => {
 cryptoApp.autoFill = (arrayData) => {
     const searchBar = document.getElementById('submit');
     const suggestionsPanel = document.querySelector('.suggestions');
-    const formArea = document.querySelector('fieldset');
-    // const nextSibling = document.querySelector('.third-item').nextElementSibling;
-
-
-    searchBar.addEventListener('keyup', function () {
-        suggestionsPanel.innerHTML = '';
-        const input = searchBar.value.toLowerCase();
-        const suggestions = arrayData.filter((specificCrypto) => {
-            return specificCrypto.id.toLowerCase().startsWith(input) ||
-            specificCrypto.name.toLowerCase().startsWith(input) ||
-            specificCrypto.symbol.toLowerCase().startsWith(input)
-        });
-        
-        suggestions.forEach(function (suggested) {
-            const coinSuggestion = document.createElement('li');
-            coinSuggestion.setAttribute('tabindex', '0');
-            coinSuggestion.innerHTML = `<img src="${suggested.image}" alt="Symbol for ${suggested.name}" class="searchSymbol">  ${suggested.name}`;
-            suggestionsPanel.appendChild(coinSuggestion);
-        });
+    let prevValue = '';
+    searchInput.addEventListener('keyup', function (event) {
+        const input = searchInput.value.toLowerCase();
         if (input === '') {
             suggestionsPanel.innerHTML = '';
-        };
+        } else if (input !== prevValue) {
+            suggestionsPanel.innerHTML = '';
+            const suggestions = arrayData.filter((specificCrypto) => {
+                return specificCrypto.id.toLowerCase().startsWith(input) ||
+                    specificCrypto.name.toLowerCase().startsWith(input) ||
+                    specificCrypto.symbol.toLowerCase().startsWith(input)
+            });
+
+            suggestions.forEach(function (suggested, index) {
+                const coinSuggestion = document.createElement('li');
+                coinSuggestion.setAttribute('tabindex', '0');
+                if (index === 0) {
+                    coinSuggestion.classList.add('active');
+                }
+                coinSuggestion.innerHTML = `<img src="${suggested.image}" alt="Symbol for ${suggested.name}" class="searchSymbol">  ${suggested.name}`;
+                suggestionsPanel.appendChild(coinSuggestion);
+            });
+        }
+        prevValue = input;
     });
 
-    suggestionsPanel.addEventListener('click', function (event) {
-        let userChoice = event.target.innerText;
-        searchBar.value = `${userChoice}`;
+    function setSearchText (event) {
+        searchInput.value = event.target.innerText;
         suggestionsPanel.innerHTML = "";
-        searchBar.focus();
-    });
+        searchInput.focus();
+    }
+    suggestionsPanel.addEventListener('click', setSearchText) 
 
     suggestionsPanel.addEventListener('keyup', function (event) {
-        if (event.keyCode === 13) {
-            let userChoice = event.target.innerText;
-            searchBar.value = `${userChoice}`;
-            suggestionsPanel.innerHTML = "";
-            searchBar.focus(); 
+        if (event.key === "Enter") {
+            setSearchText(event);
         }
     });
     
     document.addEventListener('keyup', function (event) {
+        const isArrowDown = event.key === "ArrowDown";
         if (event.key === "Escape") {
             suggestionsPanel.innerHTML = "";   
-            searchBar.focus(); 
-        }
+        } else if (isArrowDown || event.key === "ArrowUp") {
+            const activeSuggestion = document.querySelector('.suggestions li.active');
+            if (activeSuggestion) {
+                const suggestions = activeSuggestion.parentNode.childNodes
+                const activeIndex = Array.from(suggestions).indexOf(activeSuggestion);
+                const direction = isArrowDown ? 1 : -1;
+                const nextSuggestion = suggestions[activeIndex + direction]
+                if (nextSuggestion) {
+                    nextSuggestion.classList.add('active')
+                    activeSuggestion.classList.remove('active')
+                }
+            }
+        } 
     });
 
     let arrowCount = 0;
@@ -108,8 +119,9 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        const userInput = inputArea.value;
-        
+        const activeSuggestion = suggestions.querySelector("li.active");
+        const userInput = activeSuggestion ? activeSuggestion.innerText : inputArea.value;
+
         const individualCrypto = dataFromAPI.find( (crypto) => userInput.toLowerCase() == crypto.name.toLowerCase());
         cryptoInfo.classList.remove('animate');
         setTimeout(() => {
