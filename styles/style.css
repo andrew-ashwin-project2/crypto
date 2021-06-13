@@ -241,17 +241,13 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: "Helvetica Neue", sans-serif;
-  background-color: black;
+  font-size: 62.5%;
 }
 
 .wrapper {
   max-width: 1200px;
   width: 90%;
   margin: 0 auto;
-}
-
-html {
-  font-size: 62.5%;
 }
 
 a {
@@ -420,7 +416,8 @@ button:active {
 }
 
 .suggestions li:hover,
-.suggestions li:focus-within {
+.suggestions li:focus-within,
+.suggestions li.active {
   background-color: #427de2;
 }
 
@@ -546,7 +543,9 @@ footer {
     max-width: 100px;
   }
 
-  .name, .price, .percent {
+  .name,
+.price,
+.percent {
     font-size: 2.5rem;
     margin: 0 auto;
     text-align: center;
@@ -607,7 +606,10 @@ footer {
     text-align: center;
   }
 
-  .low24, .high24, .change24, .change1 {
+  .low24,
+.high24,
+.change24,
+.change1 {
     font-size: 1.75rem;
     text-align: center;
   }
