@@ -21,7 +21,7 @@ cryptoApp.getCrypto = () => {
 
 // Suggestion Box Related Function 
 cryptoApp.autoFill = (arrayData) => {
-    const searchBar = document.getElementById('submit');
+    const searchInput = document.getElementById('submit');
     const suggestionsPanel = document.querySelector('.suggestions');
     let prevValue = '';
     searchInput.addEventListener('keyup', function (event) {
@@ -39,6 +39,7 @@ cryptoApp.autoFill = (arrayData) => {
             suggestions.forEach(function (suggested, index) {
                 const coinSuggestion = document.createElement('li');
                 coinSuggestion.setAttribute('tabindex', '0');
+                // index === 0 makes first suggestion active.
                 if (index === 0) {
                     coinSuggestion.classList.add('active');
                 }
@@ -55,7 +56,6 @@ cryptoApp.autoFill = (arrayData) => {
         searchInput.focus();
     }
     suggestionsPanel.addEventListener('click', setSearchText) 
-
     suggestionsPanel.addEventListener('keyup', function (event) {
         if (event.key === "Enter") {
             setSearchText(event);
@@ -67,48 +67,28 @@ cryptoApp.autoFill = (arrayData) => {
         if (event.key === "Escape") {
             suggestionsPanel.innerHTML = "";   
         } else if (isArrowDown || event.key === "ArrowUp") {
+            
             const activeSuggestion = document.querySelector('.suggestions li.active');
             if (activeSuggestion) {
                 const suggestions = activeSuggestion.parentNode.childNodes
                 const activeIndex = Array.from(suggestions).indexOf(activeSuggestion);
-                const direction = isArrowDown ? 1 : -1;
+
+                let direction = 0 
+                if(isArrowDown) {
+                    direction = 1
+                } else {
+                    direction = -1
+                }
+
                 const nextSuggestion = suggestions[activeIndex + direction]
                 if (nextSuggestion) {
-                    nextSuggestion.classList.add('active')
                     activeSuggestion.classList.remove('active')
-                }
-            }
-        } 
-    });
-
-    let arrowCount = 0;
-    formArea.addEventListener('keyup', function (event) {
-        if (event.key === "ArrowDown" && document.activeElement === suggestionsPanel.lastChild) {
-            arrowCount++
-            suggestionsPanel.lastChild.focus();
-            if (arrowCount > 1) {
-                searchBar.focus();
-                event.target.removeEventListener('keyup');
-                document.addEventListener('keyup');
-            }
+                    nextSuggestion.classList.add('active')
+                };
+            };
         };
-
-        // console.log(suggestionsPanel.lastChild);
-        if (event.key === "ArrowDown" && document.activeElement === searchBar) {
-            suggestionsPanel.firstElementChild.focus(); 
-        } else if (event.key === "ArrowDown" && document.activeElement !== searchBar) {
-            if (document.activeElement == suggestionsPanel.lastChild) {
-                return 
-            }
-            document.activeElement.nextSibling.focus();
-        } else if (event.key === "ArrowUp" && document.activeElement !== searchBar) {
-            document.activeElement.previousSibling.focus();
-        } 
     });
 };
-
-
-
 
 // Displaying Info on Page Related Function
 cryptoApp.displayCrypto = function (dataFromAPI) {
@@ -120,7 +100,12 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         const activeSuggestion = suggestions.querySelector("li.active");
-        const userInput = activeSuggestion ? activeSuggestion.innerText : inputArea.value;
+        let userInput = '';
+        if (activeSuggestion) {
+            userInput = activeSuggestion.innerText;
+        } else {
+            userInput = inputArea.value;
+        };
 
         const individualCrypto = dataFromAPI.find( (crypto) => userInput.toLowerCase() == crypto.name.toLowerCase());
         cryptoInfo.classList.remove('animate');
@@ -128,7 +113,6 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
             cryptoInfo.classList.add('animate');
         }, 0);
         if (individualCrypto) {
-            console.log(individualCrypto);
             cryptoInfo.innerHTML = `
                 <figure class="icon">
                 <img src="${individualCrypto.image}" alt="Symbol for ${individualCrypto.name}">
@@ -165,7 +149,6 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
                     percentChange.style.color="green";
                 };
 
-
                 suggestions.innerHTML = "";
                 inputArea.value = '';
         } else {
@@ -196,3 +179,10 @@ cryptoApp.init = () => {
 }
 // Call Init
 cryptoApp.init();
+
+// Note for David:
+// Hi David. One thing we couldn't figure out was when using the arrow keys to navigate through the suggested cryptos, the selected/highlighted crypto would go down the list but the ul would remain stationary, causing the user not to be able to see what the currently selected crypto is. 
+
+// One solution we found was to add focus to the nextSuggestion.focus(), but lost the ability to press enter on the highlighted crypto and immediately search. To keep this feature, we had to not use nextSuggestion.focus() and increase the max-width of our ul. 
+
+// Is there a way for us to do both? As the user down arrows deeper into the ul, the focus will stay in the search bar and the user will be able to see which li is being selected AND press enter on it to search immediately.  
