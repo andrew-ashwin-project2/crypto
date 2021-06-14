@@ -23,6 +23,7 @@ cryptoApp.getCrypto = () => {
 cryptoApp.autoFill = (arrayData) => {
     const searchInput = document.getElementById('submit');
     const suggestionsPanel = document.querySelector('.suggestions');
+    // preValue to prevent page re-rendering when arrow key is pressed 
     let prevValue = '';
     searchInput.addEventListener('keyup', function (event) {
         const input = searchInput.value.toLowerCase();
@@ -39,7 +40,6 @@ cryptoApp.autoFill = (arrayData) => {
             suggestions.forEach(function (suggested, index) {
                 const coinSuggestion = document.createElement('li');
                 coinSuggestion.setAttribute('tabindex', '0');
-                // index === 0 makes first suggestion active.
                 if (index === 0) {
                     coinSuggestion.classList.add('active');
                 }
