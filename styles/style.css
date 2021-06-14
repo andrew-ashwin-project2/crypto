@@ -387,7 +387,7 @@ button:active {
 .suggestions {
   padding: 0;
   margin: 0;
-  max-height: 200px;
+  max-height: 450px;
   overflow: auto;
   position: relative;
   width: 100%;
@@ -570,6 +570,10 @@ footer {
 
   input[type=text] {
     font-size: 1.8rem;
+  }
+
+  .suggestions {
+    max-height: 175px;
   }
 
   .suggestions li {
