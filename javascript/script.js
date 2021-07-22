@@ -14,6 +14,7 @@ cryptoApp.getCrypto = () => {
     fetch(apiURL).then((rawData) => {
         return rawData.json();
     }).then((jsonData) => {
+        console.log(jsonData)
         cryptoApp.displayCrypto(jsonData);
         cryptoApp.autoFill(jsonData);
     });
@@ -47,6 +48,9 @@ cryptoApp.autoFill = (arrayData) => {
                 suggestionsPanel.appendChild(coinSuggestion);
             });
         }
+        // Control when suggestion list gets re-rendered.
+        // Only replaced when value of input changes.
+        // Don't want list to re-render when pressing arrow keys.
         prevValue = input;
     });
 
@@ -103,7 +107,8 @@ cryptoApp.displayCrypto = function (dataFromAPI) {
         let userInput = '';
         if (activeSuggestion) {
             userInput = activeSuggestion.innerText;
-        } else {
+        } 
+        else {
             userInput = inputArea.value;
         };
 
@@ -179,10 +184,3 @@ cryptoApp.init = () => {
 }
 // Call Init
 cryptoApp.init();
-
-// Note for David:
-// Hi David. One thing we couldn't figure out was when using the arrow keys to navigate through the suggested cryptos, the selected/highlighted crypto would go down the list but the ul would remain stationary, causing the user not to be able to see what the currently selected crypto is. 
-
-// One solution we found was to add focus to the nextSuggestion.focus(), but lost the ability to press enter on the highlighted crypto and immediately search. To keep this feature, we had to not use nextSuggestion.focus() and increase the max-width of our ul. 
-
-// Is there a way for us to do both? As the user down arrows deeper into the ul, the focus will stay in the search bar and the user will be able to see which li is being selected AND press enter on it to search immediately.  
