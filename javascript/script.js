@@ -14,7 +14,6 @@ cryptoApp.getCrypto = () => {
     fetch(apiURL).then((rawData) => {
         return rawData.json();
     }).then((jsonData) => {
-        console.log(jsonData)
         cryptoApp.displayCrypto(jsonData);
         cryptoApp.autoFill(jsonData);
     });
